@@ -14,6 +14,9 @@ namespace SocialNet
             PictureAdded,
             PostAdded,
             Birthday,
+            GenderChanged,
+            SchoolChanged,
+            UniversityChanged,
         }
 
         public UpdatedEventArgs() :
@@ -33,19 +36,25 @@ namespace SocialNet
                 case UpdateType.Undefined:
                     Info = "Неопределенное событие."; break;
                 case UpdateType.NameChanged:
-                    Source.Initials = $"Пользователь \"{info}\" изменил имя на \"{Source.Initials}\"."; break;
+                    Info = $"Пользователь \"{info}\" изменил имя на \"{Source.Initials}\"."; break;
                 case UpdateType.BirthdayChanged:
-                    Source.Initials = $"Пользователь \"{Source.Initials}\" изменил день рождения на \"{info}\"."; break;
+                    Info = $"Пользователь \"{Source.Initials}\" изменил день рождения на \"{info}\"."; break;
                 case UpdateType.MaritalStatusChanged:
-                    Source.Initials = $"Пользователь \"{Source.Initials}\" изменил семейное положение на \"{info}\"."; break;
+                    Info = $"Пользователь \"{Source.Initials}\" изменил семейное положение на \"{info}\"."; break;
                 case UpdateType.FriendAdded:
-                    Source.Initials = $"Пользователь \"{Source.Initials}\" добавил друга \"{info}\"."; break;
+                    Info = $"Пользователь \"{Source.Initials}\" добавил друга \"{info}\"."; break;
                 case UpdateType.PictureAdded:
-                    Source.Initials = $"Пользователь \"{Source.Initials}\" добавил изображение \"{info}\"."; break;
+                    Info = $"Пользователь \"{Source.Initials}\" добавил изображение \"{info}\"."; break;
                 case UpdateType.PostAdded:
-                    Source.Initials = $"Пользователь \"{Source.Initials}\" добавил новость \"{info}\"."; break;
+                    Info = $"Пользователь \"{Source.Initials}\" добавил новость \"{info}\"."; break;
                 case UpdateType.Birthday:
-                    Source.Initials = $"У пользователя \"{Source.Initials}\" сегодня день рождения."; break;
+                    Info = $"У пользователя \"{Source.Initials}\" сегодня день рождения."; break;
+                case UpdateType.GenderChanged:
+                    Info = $"Пользователь \"{Source.Initials}\" поменял пол на {Source.Gender.Description()}."; break;
+                case UpdateType.SchoolChanged:
+                    Info = $"Пользователь \"{Source.Initials}\" изменил информацию о школе на {Source.School}."; break;
+                case UpdateType.UniversityChanged:
+                    Info = $"Пользователь \"{Source.Initials}\" изменил информацию об университете на {Source.University}."; break;
                 default:
                     break;
             }

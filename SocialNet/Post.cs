@@ -8,6 +8,16 @@ namespace SocialNet
 {
     public class Post
     {
+        public Post(string text)
+        {
+            Text = text;
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+
         public string Text { get; set; }
     }
 }

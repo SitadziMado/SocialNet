@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace SocialNet
 {
-    internal class Journal
+    public class Journal
     {
         public Journal()
         {
-
+            mUpdates = new List<UpdatedEventArgs>();
         }
 
         public void OnUpdate(UpdatedEventArgs uea)

@@ -15,8 +15,13 @@ namespace SocialNet
 
         public enum GenderType
         {
+            [Description("Не указано")]
             Undefined,
+
+            [Description("Мужчина")]
             Male,
+
+            [Description("Женщина")]
             Female,
         }
 
@@ -36,6 +41,8 @@ namespace SocialNet
 
         public Person()
         {
+            Updated = (UpdatedEventArgs uae) => { };
+
             mUsername = String.Empty;
             mPassword = String.Empty;
             mFriends  = new List<Person>();
@@ -58,18 +65,47 @@ namespace SocialNet
             mPassword = password;
         }
 
+        public static MaritalStatusType IndexToMaritalStatus(int index)
+        {
+            if (index >= 0 && index < mMaritalStatusMap.Count)
+                return mMaritalStatusMap[index];
+
+            throw new ArgumentOutOfRangeException();
+        }
+
+        public static int MaritalStatusToIndex(MaritalStatusType ms)
+            => mMaritalStatusMap.IndexOf(ms);
+
+        public static GenderType IndexToGender(int index)
+        {
+            if (index >= 0 && index < mGenderMap.Count)
+                return mGenderMap[index];
+
+            throw new ArgumentOutOfRangeException();
+        }
+
+        public static int GenderToIndex(GenderType ms)
+            => mGenderMap.IndexOf(ms);
+
+
         public bool MatchCredentials(string username, string password) 
             => mUsername == username && mPassword == password; 
 
         public void AddFriend(Person friend)
         {
             mFriends.Add(friend);
+            friend.mFriends.Add(this);
+
+            Updated += friend.mUpdates.OnUpdate;
             friend.Updated += mUpdates.OnUpdate;
         }
 
         public void RemoveFriend(Person friend)
         {
             mFriends.Remove(friend);
+            friend.mFriends.Remove(this);
+
+            Updated -= friend.mUpdates.OnUpdate;
             friend.Updated -= mUpdates.OnUpdate;
         }
 
@@ -106,10 +142,15 @@ namespace SocialNet
             throw new NotImplementedException();
         }
 
-        IEnumerable<Person> Friends { get => mFriends.AsEnumerable(); }
-        IEnumerable<Post> Posts { get => mPosts.AsEnumerable(); }
-        IEnumerable<Picture> Pictures { get => mPictures.AsEnumerable(); }
-        IEnumerable<int> Updates { get => throw new NotImplementedException(); }
+        public override string ToString()
+        {
+            return Initials;
+        }
+
+        public IEnumerable<Person> Friends { get => mFriends.AsEnumerable(); }
+        public IEnumerable<Post> Posts { get => mPosts.AsEnumerable(); }
+        public IEnumerable<Picture> Pictures { get => mPictures.AsEnumerable(); }
+        public IEnumerable<UpdatedEventArgs> Updates { get => mUpdates.GetUpdates(); }
 
         public string Initials
         {
@@ -151,19 +192,74 @@ namespace SocialNet
             }
         }
 
-        public string School { get; set; }
-        public string University { get; set; }
-        public GenderType Gender { get; internal set; }
+        public string School
+        {
+            get
+            {
+                return mSchool;
+            }
+            set
+            {
+                mSchool = value;
+                Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.SchoolChanged, value));
+            }
+        }
 
-        private string mInitials;
-        private DateTime mBirthday;
+        public string University
+        {
+            get
+            {
+                return mUniversity;
+            }
+            set
+            {
+                mUniversity = value;
+                Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.UniversityChanged, value));
+            }
+        }
+
+        public GenderType Gender
+        {
+            get
+            {
+                return mGender;
+            }
+            set
+            {
+                mGender = value;
+                Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.GenderChanged, value.Description()));
+            }
+        }
+
+        private string mInitials = String.Empty;
+        private DateTime mBirthday = DateTime.Now;
         private MaritalStatusType mMaritalStatus;
+        private string mSchool;
+        private string mUniversity;
+        private GenderType mGender;
 
         private string mUsername;
         private string mPassword;
         private List<Person> mFriends;
         private List<Post> mPosts;
         private List<Picture> mPictures;
+
+        private static List<MaritalStatusType> mMaritalStatusMap
+            = new List<MaritalStatusType>
+        {
+            MaritalStatusType.Undefined,
+            MaritalStatusType.Single,
+            MaritalStatusType.Married,
+        };
+
+        private static List<GenderType> mGenderMap
+            = new List<GenderType>
+        {
+            GenderType.Undefined,
+            GenderType.Male,
+            GenderType.Female,
+        };
+
 
         [NonSerialized]
         private Journal mUpdates;
