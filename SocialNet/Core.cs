@@ -13,7 +13,7 @@ namespace SocialNet
     {
         public Core()
         {
-
+            mPeople = new List<Person>();
         }
 
         public void Register(Person info)
@@ -64,7 +64,22 @@ namespace SocialNet
                     xmlSerializer.Serialize(fs, v);
         }
 
-        private Person Current { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <exception cref="UserNotRegisteredException"></exception>
+        public Person FindByName(string name)
+        {
+            foreach (var a in mPeople)
+                if (a.Initials == name)
+                    return a;
+
+            throw new UserNotRegisteredException();
+        }
+
+        public Person Current { get; set; }
 
         private List<Person> mPeople;
     }
