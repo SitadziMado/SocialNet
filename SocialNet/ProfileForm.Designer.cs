@@ -56,10 +56,10 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.FriendsLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.AddFriendLabel = new System.Windows.Forms.LinkLabel();
-            this.ExitLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.UpdatesListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.UpdatesListBox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ExitLinkLabel = new System.Windows.Forms.LinkLabel();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             groupBox3 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
@@ -430,37 +430,6 @@
             this.AddFriendLabel.Text = "Добавить друга...";
             this.AddFriendLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddFriendLabel_LinkClicked);
             // 
-            // ExitLinkLabel
-            // 
-            this.ExitLinkLabel.AutoSize = true;
-            this.ExitLinkLabel.Location = new System.Drawing.Point(3, 3);
-            this.ExitLinkLabel.Margin = new System.Windows.Forms.Padding(3);
-            this.ExitLinkLabel.Name = "ExitLinkLabel";
-            this.ExitLinkLabel.Size = new System.Drawing.Size(39, 13);
-            this.ExitLinkLabel.TabIndex = 4;
-            this.ExitLinkLabel.TabStop = true;
-            this.ExitLinkLabel.Text = "Выйти";
-            this.ExitLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ExitLinkLabel_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Уведомления:";
-            // 
-            // UpdatesListBox
-            // 
-            this.UpdatesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UpdatesListBox.FormattingEnabled = true;
-            this.UpdatesListBox.Location = new System.Drawing.Point(3, 41);
-            this.UpdatesListBox.Name = "UpdatesListBox";
-            this.UpdatesListBox.Size = new System.Drawing.Size(301, 712);
-            this.UpdatesListBox.TabIndex = 6;
-            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
@@ -478,6 +447,37 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(307, 756);
             this.tableLayoutPanel7.TabIndex = 7;
+            // 
+            // UpdatesListBox
+            // 
+            this.UpdatesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdatesListBox.FormattingEnabled = true;
+            this.UpdatesListBox.Location = new System.Drawing.Point(3, 41);
+            this.UpdatesListBox.Name = "UpdatesListBox";
+            this.UpdatesListBox.Size = new System.Drawing.Size(301, 712);
+            this.UpdatesListBox.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Уведомления:";
+            // 
+            // ExitLinkLabel
+            // 
+            this.ExitLinkLabel.AutoSize = true;
+            this.ExitLinkLabel.Location = new System.Drawing.Point(3, 3);
+            this.ExitLinkLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.ExitLinkLabel.Name = "ExitLinkLabel";
+            this.ExitLinkLabel.Size = new System.Drawing.Size(39, 13);
+            this.ExitLinkLabel.TabIndex = 4;
+            this.ExitLinkLabel.TabStop = true;
+            this.ExitLinkLabel.Text = "Выйти";
+            this.ExitLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ExitLinkLabel_LinkClicked);
             // 
             // ProfileForm
             // 

@@ -97,7 +97,7 @@ namespace SocialNet
             friend.mFriends.Add(this);
 
             Updated += friend.mUpdates.OnUpdate;
-            friend.Updated += mUpdates.OnUpdate;
+            //friend.Updated += mUpdates.OnUpdate;
 
             Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.FriendAdded, friend.Initials));
         }
@@ -108,7 +108,7 @@ namespace SocialNet
             friend.mFriends.Remove(this);
 
             Updated -= friend.mUpdates.OnUpdate;
-            friend.Updated -= mUpdates.OnUpdate;
+            //friend.Updated -= mUpdates.OnUpdate;
         }
 
         public void AddPost(Post post)
@@ -149,10 +149,10 @@ namespace SocialNet
             return Initials;
         }
 
-        public IEnumerable<Person> Friends { get => mFriends.AsEnumerable(); }
-        public IEnumerable<Post> Posts { get => mPosts.AsEnumerable(); }
-        public IEnumerable<Picture> Pictures { get => mPictures.AsEnumerable(); }
-        public IEnumerable<UpdatedEventArgs> Updates { get => mUpdates.GetUpdates(); }
+        public IEnumerable<Person> Friends { get { return mFriends.AsEnumerable(); } }
+        public IEnumerable<Post> Posts { get { return mPosts.AsEnumerable(); } }
+        public IEnumerable<Picture> Pictures { get { return mPictures.AsEnumerable(); } }
+        public IEnumerable<UpdatedEventArgs> Updates { get { return mUpdates.GetUpdates(); } }
 
         public string Initials
         {

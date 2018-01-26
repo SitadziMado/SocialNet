@@ -27,6 +27,7 @@ namespace SocialNet
                 if (v.MatchCredentials(username, password))
                 {
                     Current = v;
+                    Rendered = Current;
                     return v;
                 }
 
@@ -35,7 +36,7 @@ namespace SocialNet
 
         public void LoadUsers(string path = "users.xml")
         {
-            var xmlSerializer = new XmlSerializer(typeof(Person));
+            /*var xmlSerializer = new XmlSerializer(typeof(Person));
 
             LinkedList<Person> people = new LinkedList<Person>();
 
@@ -52,7 +53,7 @@ namespace SocialNet
             {
             }
 
-            mPeople = people.ToList();
+            mPeople = people.ToList();*/
         }
 
         public void UnloadUsers(string path = "users.xml")
@@ -80,6 +81,7 @@ namespace SocialNet
         }
 
         public Person Current { get; set; }
+        public Person Rendered { get; set; }
 
         private List<Person> mPeople;
     }

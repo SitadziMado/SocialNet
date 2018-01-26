@@ -15,6 +15,7 @@ namespace SocialNet
     public partial class ProfileForm : Form
     {
         private Core mCore = new Core();
+        private bool mLink = false;
 
         public ProfileForm()
         {
@@ -31,9 +32,14 @@ namespace SocialNet
             return res;
         }
 
+        bool IsCurrent()
+        {
+            return mCore.Current == mCore.Rendered && !mLink;
+        }
+
         void RenderInfo()
         {
-            var cur = mCore.Current;
+            var cur = mCore.Rendered; // mCore.Current;
 
             InitialsTextBox.Text = cur.Initials;
             BirthdayDateTimePicker.Value = cur.Birthday;
@@ -41,6 +47,15 @@ namespace SocialNet
             MaritalStatusComboBox.SelectedIndex = Person.MaritalStatusToIndex(cur.MaritalStatus);
             SchoolTextBox.Text = cur.School;
             UniversityTextBox.Text = cur.University;
+
+            bool b = mCore.Current == mCore.Rendered; // IsCurrent();
+
+            InitialsTextBox.Enabled = b;
+            BirthdayDateTimePicker.Enabled = b;
+            GenderComboBox.Enabled = b;
+            MaritalStatusComboBox.Enabled = b;
+            SchoolTextBox.Enabled = b;
+            UniversityTextBox.Enabled = b;
 
             RenderBoxes(cur.Friends, FriendsLayout);
             RenderBoxes(cur.Pictures, PicturesLayout);
@@ -55,6 +70,8 @@ namespace SocialNet
                     UpdatesListBox.Items.Add(a.Info);               
             else
                 UpdatesListBox.Items.Add("Никто из Ваших друзей еще ничего не сделал.");
+
+            mLink = false;
         }
 
         void RenderBoxes<T>(IEnumerable<T> collection, FlowLayoutPanel flp)
@@ -68,10 +85,13 @@ namespace SocialNet
                 var label = new Label
                 {
                     AutoSize = false,
-                    Text = a.ToString(),
                     BorderStyle = BorderStyle.FixedSingle,
                     Size = new Size(size, size),
+                    Text = a.ToString(),
                 };
+
+                label.Tag = a;
+                label.MouseClick += DynamicElement_MouseClick;
 
                 flp.Controls.Add(label);
             }
@@ -150,37 +170,81 @@ namespace SocialNet
 
         private void InitialsTextBox_TextChanged(object sender, EventArgs e)
         {
-            mCore.Current.Initials = InitialsTextBox.Text;
+            if (IsCurrent())
+                mCore.Current.Initials = InitialsTextBox.Text;
         }
 
         private void BirthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            mCore.Current.Birthday = BirthdayDateTimePicker.Value;
+            if (IsCurrent())
+                mCore.Current.Birthday = BirthdayDateTimePicker.Value;
         }
 
         private void GenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mCore.Current.Gender = Person.IndexToGender(GenderComboBox.SelectedIndex);
+            if (IsCurrent())
+                mCore.Current.Gender = Person.IndexToGender(GenderComboBox.SelectedIndex);
         }
 
         private void MaritalStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mCore.Current.MaritalStatus = Person.IndexToMaritalStatus(MaritalStatusComboBox.SelectedIndex);
+            if (IsCurrent())
+                mCore.Current.MaritalStatus = Person.IndexToMaritalStatus(MaritalStatusComboBox.SelectedIndex);
         }
 
         private void SchoolTextBox_TextChanged(object sender, EventArgs e)
         {
-            mCore.Current.School = SchoolTextBox.Text;
+            if (IsCurrent())
+                mCore.Current.School = SchoolTextBox.Text;
         }
 
         private void UniversityTextBox_TextChanged(object sender, EventArgs e)
         {
-            mCore.Current.University = UniversityTextBox.Text;
+            if (IsCurrent())
+                mCore.Current.University = UniversityTextBox.Text;
         }
 
         private void ExitLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Relogin();
+        }
+
+        private void DynamicElement_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                object tag = ((Control)sender).Tag;
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (tag is Person)
+                    {
+                        mCore.Rendered = tag as Person;
+                        mLink = true;
+                        RenderInfo();
+                    }
+                }
+                else if (e.Button == MouseButtons.Middle && IsCurrent())
+                {
+                    if (tag is Person)
+                        mCore.Current.RemoveFriend(tag as Person);
+                    else if (tag is Picture)
+                        mCore.Current.RemovePicture(tag as Picture);
+                    else if (tag is Post)
+                        mCore.Current.RemovePost(tag as Post);
+                    else
+                    {
+                        MessageBox.Show("Программа еще не умеет работать с данным типом элементов.");
+                        return;
+                    }
+
+                    RenderInfo();
+                }
+            }
+            catch (InvalidCastException)
+            {
+                MessageBox.Show("Некорректный элемент.");
+            }
         }
     }
 }
