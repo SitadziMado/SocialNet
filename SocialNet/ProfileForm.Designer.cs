@@ -53,7 +53,6 @@
             this.SchoolTextBox = new System.Windows.Forms.TextBox();
             this.MaritalStatusComboBox = new System.Windows.Forms.ComboBox();
             this.ApplyButton = new System.Windows.Forms.Button();
-            this.AvatarPicture = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.FriendsLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.AddFriendLabel = new System.Windows.Forms.LinkLabel();
@@ -74,7 +73,6 @@
             this.tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AvatarPicture)).BeginInit();
             groupBox1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -83,8 +81,8 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             tableLayoutPanel1.Controls.Add(groupBox3, 1, 3);
             tableLayoutPanel1.Controls.Add(groupBox2, 1, 2);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
@@ -99,19 +97,16 @@
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(941, 762);
+            tableLayoutPanel1.Size = new System.Drawing.Size(1084, 762);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(this.tableLayoutPanel6);
             groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox3.Location = new System.Drawing.Point(316, 573);
+            groupBox3.Location = new System.Drawing.Point(436, 573);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(622, 186);
+            groupBox3.Size = new System.Drawing.Size(645, 186);
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "Новости";
@@ -128,7 +123,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(616, 166);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(639, 166);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // AddPostLabel
@@ -149,16 +144,16 @@
             this.PostsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PostsLayout.Location = new System.Drawing.Point(3, 22);
             this.PostsLayout.Name = "PostsLayout";
-            this.PostsLayout.Size = new System.Drawing.Size(610, 141);
+            this.PostsLayout.Size = new System.Drawing.Size(633, 141);
             this.PostsLayout.TabIndex = 0;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(this.tableLayoutPanel5);
             groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox2.Location = new System.Drawing.Point(316, 383);
+            groupBox2.Location = new System.Drawing.Point(436, 383);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(622, 184);
+            groupBox2.Size = new System.Drawing.Size(645, 184);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Изображения";
@@ -175,7 +170,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(616, 164);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(639, 164);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // AddPictureLabel
@@ -196,22 +191,21 @@
             this.PicturesLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PicturesLayout.Location = new System.Drawing.Point(3, 22);
             this.PicturesLayout.Name = "PicturesLayout";
-            this.PicturesLayout.Size = new System.Drawing.Size(610, 139);
+            this.PicturesLayout.Size = new System.Drawing.Size(633, 139);
             this.PicturesLayout.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
-            tableLayoutPanel2.Controls.Add(this.AvatarPicture, 0, 0);
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel2.Location = new System.Drawing.Point(316, 3);
+            tableLayoutPanel2.Location = new System.Drawing.Point(436, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new System.Drawing.Size(622, 184);
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new System.Drawing.Size(645, 184);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -233,7 +227,7 @@
             tableLayoutPanel3.Controls.Add(this.MaritalStatusComboBox, 1, 3);
             tableLayoutPanel3.Controls.Add(this.ApplyButton, 0, 6);
             tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel3.Location = new System.Drawing.Point(314, 3);
+            tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 7;
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
@@ -244,37 +238,37 @@
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new System.Drawing.Size(305, 178);
+            tableLayoutPanel3.Size = new System.Drawing.Size(639, 178);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // GenderComboBox
             // 
-            this.GenderComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GenderComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderComboBox.FormattingEnabled = true;
             this.GenderComboBox.Items.AddRange(new object[] {
             "Не указано",
             "Мужчина",
             "Женщина"});
-            this.GenderComboBox.Location = new System.Drawing.Point(150, 53);
+            this.GenderComboBox.Location = new System.Drawing.Point(148, 53);
             this.GenderComboBox.Name = "GenderComboBox";
-            this.GenderComboBox.Size = new System.Drawing.Size(150, 21);
+            this.GenderComboBox.Size = new System.Drawing.Size(488, 21);
             this.GenderComboBox.TabIndex = 14;
             // 
             // UniversityTextBox
             // 
-            this.UniversityTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.UniversityTextBox.Location = new System.Drawing.Point(150, 128);
+            this.UniversityTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UniversityTextBox.Location = new System.Drawing.Point(148, 128);
             this.UniversityTextBox.Name = "UniversityTextBox";
-            this.UniversityTextBox.Size = new System.Drawing.Size(150, 21);
+            this.UniversityTextBox.Size = new System.Drawing.Size(488, 21);
             this.UniversityTextBox.TabIndex = 13;
             // 
             // InitialsTextBox
             // 
-            this.InitialsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.InitialsTextBox.Location = new System.Drawing.Point(150, 3);
+            this.InitialsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InitialsTextBox.Location = new System.Drawing.Point(148, 3);
             this.InitialsTextBox.Name = "InitialsTextBox";
-            this.InitialsTextBox.Size = new System.Drawing.Size(150, 21);
+            this.InitialsTextBox.Size = new System.Drawing.Size(488, 21);
             this.InitialsTextBox.TabIndex = 11;
             // 
             // UniversityLabel
@@ -345,33 +339,33 @@
             // 
             // BirthdayDateTimePicker
             // 
-            this.BirthdayDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(150, 28);
+            this.BirthdayDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(148, 28);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
-            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(150, 21);
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(488, 21);
             this.BirthdayDateTimePicker.TabIndex = 10;
             this.BirthdayDateTimePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // SchoolTextBox
             // 
-            this.SchoolTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SchoolTextBox.Location = new System.Drawing.Point(150, 103);
+            this.SchoolTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SchoolTextBox.Location = new System.Drawing.Point(148, 103);
             this.SchoolTextBox.Name = "SchoolTextBox";
-            this.SchoolTextBox.Size = new System.Drawing.Size(150, 21);
+            this.SchoolTextBox.Size = new System.Drawing.Size(488, 21);
             this.SchoolTextBox.TabIndex = 9;
             // 
             // MaritalStatusComboBox
             // 
-            this.MaritalStatusComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.MaritalStatusComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MaritalStatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MaritalStatusComboBox.FormattingEnabled = true;
             this.MaritalStatusComboBox.Items.AddRange(new object[] {
             "Не указано",
             "Не женат/не замужем",
             "Женат/замужем"});
-            this.MaritalStatusComboBox.Location = new System.Drawing.Point(150, 78);
+            this.MaritalStatusComboBox.Location = new System.Drawing.Point(148, 78);
             this.MaritalStatusComboBox.Name = "MaritalStatusComboBox";
-            this.MaritalStatusComboBox.Size = new System.Drawing.Size(150, 21);
+            this.MaritalStatusComboBox.Size = new System.Drawing.Size(488, 21);
             this.MaritalStatusComboBox.TabIndex = 8;
             // 
             // ApplyButton
@@ -380,27 +374,19 @@
             this.ApplyButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ApplyButton.Location = new System.Drawing.Point(3, 153);
             this.ApplyButton.Name = "ApplyButton";
-            this.ApplyButton.Size = new System.Drawing.Size(299, 22);
+            this.ApplyButton.Size = new System.Drawing.Size(633, 22);
             this.ApplyButton.TabIndex = 15;
             this.ApplyButton.Text = "Применить";
             this.ApplyButton.UseVisualStyleBackColor = true;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
-            // AvatarPicture
-            // 
-            this.AvatarPicture.Location = new System.Drawing.Point(3, 3);
-            this.AvatarPicture.Name = "AvatarPicture";
-            this.AvatarPicture.Size = new System.Drawing.Size(234, 178);
-            this.AvatarPicture.TabIndex = 1;
-            this.AvatarPicture.TabStop = false;
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(this.tableLayoutPanel4);
             groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(316, 193);
+            groupBox1.Location = new System.Drawing.Point(436, 193);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(622, 184);
+            groupBox1.Size = new System.Drawing.Size(645, 184);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Друзья";
@@ -417,7 +403,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(616, 164);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(639, 164);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // FriendsLayout
@@ -426,7 +412,7 @@
             this.FriendsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FriendsLayout.Location = new System.Drawing.Point(3, 22);
             this.FriendsLayout.Name = "FriendsLayout";
-            this.FriendsLayout.Size = new System.Drawing.Size(610, 139);
+            this.FriendsLayout.Size = new System.Drawing.Size(633, 139);
             this.FriendsLayout.TabIndex = 0;
             // 
             // AddFriendLabel
@@ -456,7 +442,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(307, 756);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(427, 756);
             this.tableLayoutPanel7.TabIndex = 7;
             // 
             // UpdatesListBox
@@ -465,7 +451,7 @@
             this.UpdatesListBox.FormattingEnabled = true;
             this.UpdatesListBox.Location = new System.Drawing.Point(3, 41);
             this.UpdatesListBox.Name = "UpdatesListBox";
-            this.UpdatesListBox.Size = new System.Drawing.Size(301, 712);
+            this.UpdatesListBox.Size = new System.Drawing.Size(421, 712);
             this.UpdatesListBox.TabIndex = 6;
             // 
             // label1
@@ -494,7 +480,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 762);
+            this.ClientSize = new System.Drawing.Size(1084, 762);
             this.Controls.Add(tableLayoutPanel1);
             this.Name = "ProfileForm";
             this.Text = "Профиль";
@@ -511,7 +497,6 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AvatarPicture)).EndInit();
             groupBox1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -529,7 +514,6 @@
         private System.Windows.Forms.Label GenderLabel;
         private System.Windows.Forms.Label BirthdayLabel;
         private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.PictureBox AvatarPicture;
         private System.Windows.Forms.FlowLayoutPanel PostsLayout;
         private System.Windows.Forms.FlowLayoutPanel PicturesLayout;
         private System.Windows.Forms.FlowLayoutPanel FriendsLayout;

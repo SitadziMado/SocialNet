@@ -19,6 +19,8 @@ namespace SocialNet
         {
             InitializeComponent();
             mCore = core;
+
+            UpdateUsers();
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
@@ -80,6 +82,15 @@ namespace SocialNet
 
         private void Tabs_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateUsers();
+        }
+
+        private void UpdateUsers()
+        {
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(mCore.Usernames.ToArray());
+            LoginTextBox.AutoCompleteCustomSource = source;
+
             UsernameListbox.Items.Clear();
             UsernameListbox.Items.AddRange(mCore.Usernames.ToArray());
             PasswordListbox.Items.Clear();
