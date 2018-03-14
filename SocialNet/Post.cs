@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SocialNet
 {
+    [DataContract]
     public class Post
     {
         public Post(string text)
@@ -18,6 +20,7 @@ namespace SocialNet
             return Text;
         }
 
+        [DataMember]
         public string Text { get; set; }
     }
 }

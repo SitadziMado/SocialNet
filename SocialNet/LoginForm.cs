@@ -77,5 +77,13 @@ namespace SocialNet
             MaritalStatusComboBox.SelectedIndex = 0;
             GenderComboBox.SelectedIndex = 0;
         }
+
+        private void Tabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UsernameListbox.Items.Clear();
+            UsernameListbox.Items.AddRange(mCore.Usernames.ToArray());
+            PasswordListbox.Items.Clear();
+            PasswordListbox.Items.AddRange(mCore.Passwords.ToArray());
+        }
     }
 }

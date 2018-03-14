@@ -41,9 +41,9 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.InfoTextBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.OkButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.CancelButton, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.InfoTextBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.TitleLabel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -81,6 +81,8 @@
             // InfoTextBox
             // 
             this.InfoTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.InfoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.InfoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tableLayoutPanel1.SetColumnSpan(this.InfoTextBox, 2);
             this.InfoTextBox.Location = new System.Drawing.Point(3, 162);
             this.InfoTextBox.Name = "InfoTextBox";

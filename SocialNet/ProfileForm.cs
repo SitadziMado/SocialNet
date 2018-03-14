@@ -21,11 +21,11 @@ namespace SocialNet
             InitializeComponent();
         }
 
-        string InputBox(string title, bool multiline = false)
+        string InputBox(string title, string[] autoComplete = null, bool multiline = false)
         {
             string res = String.Empty;
 
-            var form = new TextDataForm(title, $"{title}:", (string r) => { res = r; }, multiline);
+            var form = new TextDataForm(title, $"{title}:", (string r) => { res = r; }, autoComplete, multiline);
             form.ShowDialog();
 
             return res;
@@ -33,7 +33,9 @@ namespace SocialNet
 
         void RenderInfo()
         {
-            var cur = mCore.Current;
+            LockControls();
+
+            var cur = mCore.Profile; // Current;
 
             InitialsTextBox.Text = cur.Initials;
             BirthdayDateTimePicker.Value = cur.Birthday;
@@ -51,8 +53,8 @@ namespace SocialNet
             UpdatesListBox.Items.Clear();
 
             if (updates != null)
-                foreach (var a in cur.Updates)                
-                    UpdatesListBox.Items.Add(a.Info);               
+                foreach (var a in cur.Updates)
+                    UpdatesListBox.Items.Add(a.Info);
             else
                 UpdatesListBox.Items.Add("Никто из Ваших друзей еще ничего не сделал.");
         }
@@ -73,13 +75,30 @@ namespace SocialNet
                     Size = new Size(size, size),
                 };
 
+                label.MouseClick += (object sender, MouseEventArgs e) =>
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        if (a is Person)
+                            mCore.Profile = (object)a as Person;
+                    }
+                    else
+                    {
+                        if (IsThisProfile())
+                            mCore.MouseEvent(a, e);
+                    }
+
+                    RenderInfo();
+
+                };
+
                 flp.Controls.Add(label);
             }
         }
 
         private void ProfileForm_Load(object sender, EventArgs e)
         {
-            // mSystem.LoadUsers();
+            mCore.LoadUsers();
             Relogin();
         }
 
@@ -93,13 +112,13 @@ namespace SocialNet
 
         private void ProfileForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // mSystem.UnloadUsers();
+            mCore.UnloadUsers();
             e.Cancel = false;
         }
 
         private void AddPostLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var name = InputBox("Введите имя человека");
+            var name = InputBox("Введите текст публикации");
 
             if (name != String.Empty)
             {
@@ -110,7 +129,7 @@ namespace SocialNet
 
         private void AddPictureLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var name = InputBox("Введите имя человека");
+            var name = InputBox("Введите заголовок изображения");
 
             if (name != String.Empty)
             {
@@ -121,24 +140,43 @@ namespace SocialNet
 
         private void AddFriendLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var name = InputBox("Введите имя человека");
+            bool friendAdded = false;
 
-            if (name != String.Empty)
+            while (!friendAdded)
             {
-                try
+                var name = InputBox("Введите имя человека", mCore.Names.ToArray());
+
+                if (name != String.Empty)
                 {
-                    var person = mCore.FindByName(name);
-                    mCore.Current.AddFriend(person);
-                    RenderInfo();
+                    try
+                    {
+                        var person = mCore.FindByName(name);
+                        mCore.Current.AddFriend(person);
+                        RenderInfo();
+                        friendAdded = true;
+                    }
+                    catch (UserNotRegisteredException)
+                    {
+                        MessageBox.Show(
+                            "Пользователь не найден.",
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation
+                        );
+                    }
+                    catch (AlreadyFriendsException)
+                    {
+                        MessageBox.Show(
+                            "Пользователь уже Ваш друг.",
+                            "Информация",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
                 }
-                catch (UserNotRegisteredException)
+                else
                 {
-                    MessageBox.Show(
-                        "Пользователь не найден.",
-                        "Ошибка",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation
-                    );
+                    return;
                 }
             }
         }
@@ -148,39 +186,58 @@ namespace SocialNet
             RenderInfo();
         }
 
-        private void InitialsTextBox_TextChanged(object sender, EventArgs e)
-        {
-            mCore.Current.Initials = InitialsTextBox.Text;
-        }
-
-        private void BirthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            mCore.Current.Birthday = BirthdayDateTimePicker.Value;
-        }
-
-        private void GenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            mCore.Current.Gender = Person.IndexToGender(GenderComboBox.SelectedIndex);
-        }
-
-        private void MaritalStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            mCore.Current.MaritalStatus = Person.IndexToMaritalStatus(MaritalStatusComboBox.SelectedIndex);
-        }
-
-        private void SchoolTextBox_TextChanged(object sender, EventArgs e)
-        {
-            mCore.Current.School = SchoolTextBox.Text;
-        }
-
-        private void UniversityTextBox_TextChanged(object sender, EventArgs e)
-        {
-            mCore.Current.University = UniversityTextBox.Text;
-        }
-
         private void ExitLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Relogin();
         }
-    }
+
+        private void ApplyButton_Click(object sender, EventArgs e)
+        {
+            var c = mCore.Current;
+
+            if (InitialsTextBox.Text != mCore.Current.Initials)
+                c.Initials = InitialsTextBox.Text;
+
+            if (BirthdayDateTimePicker.Value != c.Birthday)
+                c.Birthday = BirthdayDateTimePicker.Value;
+
+            var gender = Person.IndexToGender(GenderComboBox.SelectedIndex);
+
+            if (gender != c.Gender)
+                c.Gender = gender;
+
+            var ms = Person.IndexToMaritalStatus(MaritalStatusComboBox.SelectedIndex);
+
+            if (ms != c.MaritalStatus)
+                c.MaritalStatus = ms;
+
+            if (SchoolTextBox.Text != c.School)
+                c.School = SchoolTextBox.Text;
+
+            if (UniversityTextBox.Text != c.University)
+                c.University = UniversityTextBox.Text;
+        }
+
+        private void LockControls()
+        {
+            var enabled = IsThisProfile();
+
+            InitialsTextBox.Enabled = enabled;
+            BirthdayDateTimePicker.Enabled = enabled;
+            GenderComboBox.Enabled = enabled;
+            MaritalStatusComboBox.Enabled = enabled;
+            SchoolTextBox.Enabled = enabled;
+            UniversityTextBox.Enabled = enabled;
+            ApplyButton.Enabled = enabled;
+
+            AddFriendLabel.Enabled = enabled;
+            AddPictureLabel.Enabled = enabled;
+            AddPostLabel.Enabled = enabled;
+        }
+
+        private bool IsThisProfile()
+        {
+            return mCore.Current == mCore.Profile;
+        }
+    } 
 }

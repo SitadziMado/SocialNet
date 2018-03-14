@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
 using System.ComponentModel;
 
 namespace SocialNet
 {
-    [Serializable]
+    [DataContract]
     public class Person
     {
         public delegate void UpdatedHandler(UpdatedEventArgs uea);
@@ -45,8 +46,8 @@ namespace SocialNet
 
             mUsername = String.Empty;
             mPassword = String.Empty;
-            mFriends  = new List<Person>();
-            mPosts    = new List<Post>();
+            mFriends = new List<Person>();
+            mPosts = new List<Post>();
             mPictures = new List<Picture>();
             mUpdates = new Journal();
 
@@ -56,6 +57,8 @@ namespace SocialNet
             MaritalStatus = MaritalStatusType.Undefined;
             School = "";
             University = "";
+
+            mNames = new HashSet<string>();
         }
 
         public Person(string username, string password) :
@@ -63,6 +66,22 @@ namespace SocialNet
         {
             mUsername = username;
             mPassword = password;
+        }
+
+        public void Restored()
+        {
+            mFriends = new List<Person>();
+            mUpdates = new Journal();
+        }
+
+        public void Storing()
+        {
+            mNames = new HashSet<string>();
+
+            foreach (var v in mFriends)
+            {
+                mNames.Add(v.Initials);
+            }
         }
 
         public static MaritalStatusType IndexToMaritalStatus(int index)
@@ -88,27 +107,41 @@ namespace SocialNet
             => mGenderMap.IndexOf(ms);
 
 
-        public bool MatchCredentials(string username, string password) 
-            => mUsername == username && mPassword == password; 
+        public bool MatchCredentials(string username, string password)
+            => mUsername == username && mPassword == password;
 
         public void AddFriend(Person friend)
         {
-            mFriends.Add(friend);
-            friend.mFriends.Add(this);
+            if (friend != this && !mFriends.Contains(friend))
+            {
+                mFriends.Add(friend);
+                mNames.Add(friend.Initials);
+                friend.mFriends.Add(this);
+                friend.mNames.Add(friend.Initials);
 
-            Updated += friend.mUpdates.OnUpdate;
-            friend.Updated += mUpdates.OnUpdate;
+                Updated += friend.mUpdates.OnUpdate;
+                friend.Updated += mUpdates.OnUpdate;
 
-            Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.FriendAdded, friend.Initials));
+                Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.FriendAdded, friend.Initials));
+            }
+            else
+            {
+                throw new AlreadyFriendsException();
+            }
         }
 
         public void RemoveFriend(Person friend)
         {
-            mFriends.Remove(friend);
-            friend.mFriends.Remove(this);
+            if (friend != this && mFriends.Contains(friend))
+            {
+                mFriends.Remove(friend);
+                mNames.Remove(friend.Initials);
+                friend.mFriends.Remove(this);
+                friend.mNames.Remove(friend.Initials);
 
-            Updated -= friend.mUpdates.OnUpdate;
-            friend.Updated -= mUpdates.OnUpdate;
+                Updated -= friend.mUpdates.OnUpdate;
+                friend.Updated -= mUpdates.OnUpdate;
+            }
         }
 
         public void AddPost(Post post)
@@ -138,12 +171,6 @@ namespace SocialNet
             return mUpdates.GetUpdates();
         }
 
-        [OnSerialized]
-        private void OnSerialized(StreamingContext context)
-        {
-            throw new NotImplementedException();
-        }
-
         public override string ToString()
         {
             return Initials;
@@ -153,7 +180,10 @@ namespace SocialNet
         public IEnumerable<Post> Posts { get => mPosts.AsEnumerable(); }
         public IEnumerable<Picture> Pictures { get => mPictures.AsEnumerable(); }
         public IEnumerable<UpdatedEventArgs> Updates { get => mUpdates.GetUpdates(); }
-
+        public IEnumerable<string> Names { get { return mNames.AsEnumerable(); } }
+        public string Username { get { return mUsername; } }
+        public string Password { get { return mPassword; } }
+    
         public string Initials
         {
             get
@@ -232,19 +262,22 @@ namespace SocialNet
                 Updated(new UpdatedEventArgs(this, UpdatedEventArgs.UpdateType.GenderChanged, value.Description()));
             }
         }
+    
+        [DataMember] private string mInitials = String.Empty;
+        [DataMember] private DateTime mBirthday = DateTime.Now;
+        [DataMember] private MaritalStatusType mMaritalStatus;
+        [DataMember] private string mSchool;
+        [DataMember] private string mUniversity;
+        [DataMember] private GenderType mGender;
+        [DataMember] private string mUsername;
+        [DataMember] private string mPassword;
+        [DataMember] private List<Post> mPosts;
+        [DataMember] private List<Picture> mPictures;
 
-        private string mInitials = String.Empty;
-        private DateTime mBirthday = DateTime.Now;
-        private MaritalStatusType mMaritalStatus;
-        private string mSchool;
-        private string mUniversity;
-        private GenderType mGender;
+        [DataMember] private HashSet<string> mNames;
 
-        private string mUsername;
-        private string mPassword;
         private List<Person> mFriends;
-        private List<Post> mPosts;
-        private List<Picture> mPictures;
+        private Journal mUpdates;
 
         private static List<MaritalStatusType> mMaritalStatusMap
             = new List<MaritalStatusType>
@@ -261,9 +294,5 @@ namespace SocialNet
             GenderType.Male,
             GenderType.Female,
         };
-
-
-        [NonSerialized]
-        private Journal mUpdates;
     }
 }

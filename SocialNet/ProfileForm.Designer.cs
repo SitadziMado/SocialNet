@@ -52,14 +52,15 @@
             this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SchoolTextBox = new System.Windows.Forms.TextBox();
             this.MaritalStatusComboBox = new System.Windows.Forms.ComboBox();
+            this.ApplyButton = new System.Windows.Forms.Button();
             this.AvatarPicture = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.FriendsLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.AddFriendLabel = new System.Windows.Forms.LinkLabel();
-            this.ExitLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.UpdatesListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.UpdatesListBox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ExitLinkLabel = new System.Windows.Forms.LinkLabel();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             groupBox3 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
@@ -90,6 +91,7 @@
             tableLayoutPanel1.Controls.Add(groupBox1, 1, 1);
             tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 0, 0);
             tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -121,12 +123,12 @@
             this.tableLayoutPanel6.Controls.Add(this.AddPostLabel, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.PostsLayout, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(616, 167);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(616, 166);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // AddPostLabel
@@ -135,7 +137,7 @@
             this.AddPostLabel.Location = new System.Drawing.Point(3, 3);
             this.AddPostLabel.Margin = new System.Windows.Forms.Padding(3);
             this.AddPostLabel.Name = "AddPostLabel";
-            this.AddPostLabel.Size = new System.Drawing.Size(110, 13);
+            this.AddPostLabel.Size = new System.Drawing.Size(124, 13);
             this.AddPostLabel.TabIndex = 0;
             this.AddPostLabel.TabStop = true;
             this.AddPostLabel.Text = "Добавить новость...";
@@ -147,7 +149,7 @@
             this.PostsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PostsLayout.Location = new System.Drawing.Point(3, 22);
             this.PostsLayout.Name = "PostsLayout";
-            this.PostsLayout.Size = new System.Drawing.Size(610, 142);
+            this.PostsLayout.Size = new System.Drawing.Size(610, 141);
             this.PostsLayout.TabIndex = 0;
             // 
             // groupBox2
@@ -168,12 +170,12 @@
             this.tableLayoutPanel5.Controls.Add(this.AddPictureLabel, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.PicturesLayout, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(616, 165);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(616, 164);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // AddPictureLabel
@@ -182,7 +184,7 @@
             this.AddPictureLabel.Location = new System.Drawing.Point(3, 3);
             this.AddPictureLabel.Margin = new System.Windows.Forms.Padding(3);
             this.AddPictureLabel.Name = "AddPictureLabel";
-            this.AddPictureLabel.Size = new System.Drawing.Size(137, 13);
+            this.AddPictureLabel.Size = new System.Drawing.Size(156, 13);
             this.AddPictureLabel.TabIndex = 0;
             this.AddPictureLabel.TabStop = true;
             this.AddPictureLabel.Text = "Добавить изображение...";
@@ -194,7 +196,7 @@
             this.PicturesLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PicturesLayout.Location = new System.Drawing.Point(3, 22);
             this.PicturesLayout.Name = "PicturesLayout";
-            this.PicturesLayout.Size = new System.Drawing.Size(610, 140);
+            this.PicturesLayout.Size = new System.Drawing.Size(610, 139);
             this.PicturesLayout.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -229,16 +231,19 @@
             tableLayoutPanel3.Controls.Add(this.BirthdayDateTimePicker, 1, 1);
             tableLayoutPanel3.Controls.Add(this.SchoolTextBox, 1, 4);
             tableLayoutPanel3.Controls.Add(this.MaritalStatusComboBox, 1, 3);
+            tableLayoutPanel3.Controls.Add(this.ApplyButton, 0, 6);
             tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel3.Location = new System.Drawing.Point(314, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 6;
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            tableLayoutPanel3.RowCount = 7;
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new System.Drawing.Size(305, 178);
             tableLayoutPanel3.TabIndex = 0;
             // 
@@ -251,38 +256,35 @@
             "Не указано",
             "Мужчина",
             "Женщина"});
-            this.GenderComboBox.Location = new System.Drawing.Point(140, 62);
+            this.GenderComboBox.Location = new System.Drawing.Point(150, 53);
             this.GenderComboBox.Name = "GenderComboBox";
             this.GenderComboBox.Size = new System.Drawing.Size(150, 21);
             this.GenderComboBox.TabIndex = 14;
-            this.GenderComboBox.SelectedIndexChanged += new System.EventHandler(this.GenderComboBox_SelectedIndexChanged);
             // 
             // UniversityTextBox
             // 
             this.UniversityTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.UniversityTextBox.Location = new System.Drawing.Point(140, 151);
+            this.UniversityTextBox.Location = new System.Drawing.Point(150, 128);
             this.UniversityTextBox.Name = "UniversityTextBox";
-            this.UniversityTextBox.Size = new System.Drawing.Size(150, 20);
+            this.UniversityTextBox.Size = new System.Drawing.Size(150, 21);
             this.UniversityTextBox.TabIndex = 13;
-            this.UniversityTextBox.TextChanged += new System.EventHandler(this.UniversityTextBox_TextChanged);
             // 
             // InitialsTextBox
             // 
             this.InitialsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.InitialsTextBox.Location = new System.Drawing.Point(140, 4);
+            this.InitialsTextBox.Location = new System.Drawing.Point(150, 3);
             this.InitialsTextBox.Name = "InitialsTextBox";
-            this.InitialsTextBox.Size = new System.Drawing.Size(150, 20);
+            this.InitialsTextBox.Size = new System.Drawing.Size(150, 21);
             this.InitialsTextBox.TabIndex = 11;
-            this.InitialsTextBox.TextChanged += new System.EventHandler(this.InitialsTextBox_TextChanged);
             // 
             // UniversityLabel
             // 
             this.UniversityLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.UniversityLabel.AutoSize = true;
-            this.UniversityLabel.Location = new System.Drawing.Point(3, 155);
+            this.UniversityLabel.Location = new System.Drawing.Point(3, 131);
             this.UniversityLabel.Margin = new System.Windows.Forms.Padding(3);
             this.UniversityLabel.Name = "UniversityLabel";
-            this.UniversityLabel.Size = new System.Drawing.Size(76, 13);
+            this.UniversityLabel.Size = new System.Drawing.Size(85, 13);
             this.UniversityLabel.TabIndex = 5;
             this.UniversityLabel.Text = "Университет:";
             // 
@@ -290,10 +292,10 @@
             // 
             this.SchoolLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.SchoolLabel.AutoSize = true;
-            this.SchoolLabel.Location = new System.Drawing.Point(3, 124);
+            this.SchoolLabel.Location = new System.Drawing.Point(3, 106);
             this.SchoolLabel.Margin = new System.Windows.Forms.Padding(3);
             this.SchoolLabel.Name = "SchoolLabel";
-            this.SchoolLabel.Size = new System.Drawing.Size(43, 13);
+            this.SchoolLabel.Size = new System.Drawing.Size(51, 13);
             this.SchoolLabel.TabIndex = 4;
             this.SchoolLabel.Text = "Школа:";
             // 
@@ -301,10 +303,10 @@
             // 
             this.MaritalStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.MaritalStatusLabel.AutoSize = true;
-            this.MaritalStatusLabel.Location = new System.Drawing.Point(3, 95);
+            this.MaritalStatusLabel.Location = new System.Drawing.Point(3, 81);
             this.MaritalStatusLabel.Margin = new System.Windows.Forms.Padding(3);
             this.MaritalStatusLabel.Name = "MaritalStatusLabel";
-            this.MaritalStatusLabel.Size = new System.Drawing.Size(120, 13);
+            this.MaritalStatusLabel.Size = new System.Drawing.Size(139, 13);
             this.MaritalStatusLabel.TabIndex = 3;
             this.MaritalStatusLabel.Text = "Семейное положение:";
             // 
@@ -312,10 +314,10 @@
             // 
             this.GenderLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.GenderLabel.AutoSize = true;
-            this.GenderLabel.Location = new System.Drawing.Point(3, 66);
+            this.GenderLabel.Location = new System.Drawing.Point(3, 56);
             this.GenderLabel.Margin = new System.Windows.Forms.Padding(3);
             this.GenderLabel.Name = "GenderLabel";
-            this.GenderLabel.Size = new System.Drawing.Size(30, 13);
+            this.GenderLabel.Size = new System.Drawing.Size(34, 13);
             this.GenderLabel.TabIndex = 2;
             this.GenderLabel.Text = "Пол:";
             // 
@@ -323,10 +325,10 @@
             // 
             this.BirthdayLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BirthdayLabel.AutoSize = true;
-            this.BirthdayLabel.Location = new System.Drawing.Point(3, 37);
+            this.BirthdayLabel.Location = new System.Drawing.Point(3, 31);
             this.BirthdayLabel.Margin = new System.Windows.Forms.Padding(3);
             this.BirthdayLabel.Name = "BirthdayLabel";
-            this.BirthdayLabel.Size = new System.Drawing.Size(90, 13);
+            this.BirthdayLabel.Size = new System.Drawing.Size(104, 13);
             this.BirthdayLabel.TabIndex = 1;
             this.BirthdayLabel.Text = "День рождения:";
             // 
@@ -334,31 +336,29 @@
             // 
             this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(3, 8);
+            this.NameLabel.Location = new System.Drawing.Point(3, 6);
             this.NameLabel.Margin = new System.Windows.Forms.Padding(3);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(32, 13);
+            this.NameLabel.Size = new System.Drawing.Size(34, 13);
             this.NameLabel.TabIndex = 0;
             this.NameLabel.Text = "Имя:";
             // 
             // BirthdayDateTimePicker
             // 
             this.BirthdayDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(140, 33);
+            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(150, 28);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
-            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(150, 20);
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(150, 21);
             this.BirthdayDateTimePicker.TabIndex = 10;
             this.BirthdayDateTimePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.BirthdayDateTimePicker.ValueChanged += new System.EventHandler(this.BirthdayDateTimePicker_ValueChanged);
             // 
             // SchoolTextBox
             // 
             this.SchoolTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SchoolTextBox.Location = new System.Drawing.Point(140, 120);
+            this.SchoolTextBox.Location = new System.Drawing.Point(150, 103);
             this.SchoolTextBox.Name = "SchoolTextBox";
-            this.SchoolTextBox.Size = new System.Drawing.Size(150, 20);
+            this.SchoolTextBox.Size = new System.Drawing.Size(150, 21);
             this.SchoolTextBox.TabIndex = 9;
-            this.SchoolTextBox.TextChanged += new System.EventHandler(this.SchoolTextBox_TextChanged);
             // 
             // MaritalStatusComboBox
             // 
@@ -369,11 +369,22 @@
             "Не указано",
             "Не женат/не замужем",
             "Женат/замужем"});
-            this.MaritalStatusComboBox.Location = new System.Drawing.Point(140, 91);
+            this.MaritalStatusComboBox.Location = new System.Drawing.Point(150, 78);
             this.MaritalStatusComboBox.Name = "MaritalStatusComboBox";
             this.MaritalStatusComboBox.Size = new System.Drawing.Size(150, 21);
             this.MaritalStatusComboBox.TabIndex = 8;
-            this.MaritalStatusComboBox.SelectedIndexChanged += new System.EventHandler(this.MaritalStatusComboBox_SelectedIndexChanged);
+            // 
+            // ApplyButton
+            // 
+            tableLayoutPanel3.SetColumnSpan(this.ApplyButton, 2);
+            this.ApplyButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ApplyButton.Location = new System.Drawing.Point(3, 153);
+            this.ApplyButton.Name = "ApplyButton";
+            this.ApplyButton.Size = new System.Drawing.Size(299, 22);
+            this.ApplyButton.TabIndex = 15;
+            this.ApplyButton.Text = "Применить";
+            this.ApplyButton.UseVisualStyleBackColor = true;
+            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
             // AvatarPicture
             // 
@@ -401,12 +412,12 @@
             this.tableLayoutPanel4.Controls.Add(this.FriendsLayout, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.AddFriendLabel, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(616, 165);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(616, 164);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // FriendsLayout
@@ -415,7 +426,7 @@
             this.FriendsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FriendsLayout.Location = new System.Drawing.Point(3, 22);
             this.FriendsLayout.Name = "FriendsLayout";
-            this.FriendsLayout.Size = new System.Drawing.Size(610, 140);
+            this.FriendsLayout.Size = new System.Drawing.Size(610, 139);
             this.FriendsLayout.TabIndex = 0;
             // 
             // AddFriendLabel
@@ -424,42 +435,11 @@
             this.AddFriendLabel.Location = new System.Drawing.Point(3, 3);
             this.AddFriendLabel.Margin = new System.Windows.Forms.Padding(3);
             this.AddFriendLabel.Name = "AddFriendLabel";
-            this.AddFriendLabel.Size = new System.Drawing.Size(97, 13);
+            this.AddFriendLabel.Size = new System.Drawing.Size(112, 13);
             this.AddFriendLabel.TabIndex = 1;
             this.AddFriendLabel.TabStop = true;
             this.AddFriendLabel.Text = "Добавить друга...";
             this.AddFriendLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddFriendLabel_LinkClicked);
-            // 
-            // ExitLinkLabel
-            // 
-            this.ExitLinkLabel.AutoSize = true;
-            this.ExitLinkLabel.Location = new System.Drawing.Point(3, 3);
-            this.ExitLinkLabel.Margin = new System.Windows.Forms.Padding(3);
-            this.ExitLinkLabel.Name = "ExitLinkLabel";
-            this.ExitLinkLabel.Size = new System.Drawing.Size(39, 13);
-            this.ExitLinkLabel.TabIndex = 4;
-            this.ExitLinkLabel.TabStop = true;
-            this.ExitLinkLabel.Text = "Выйти";
-            this.ExitLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ExitLinkLabel_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Уведомления:";
-            // 
-            // UpdatesListBox
-            // 
-            this.UpdatesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UpdatesListBox.FormattingEnabled = true;
-            this.UpdatesListBox.Location = new System.Drawing.Point(3, 41);
-            this.UpdatesListBox.Name = "UpdatesListBox";
-            this.UpdatesListBox.Size = new System.Drawing.Size(301, 712);
-            this.UpdatesListBox.TabIndex = 6;
             // 
             // tableLayoutPanel7
             // 
@@ -479,6 +459,37 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(307, 756);
             this.tableLayoutPanel7.TabIndex = 7;
             // 
+            // UpdatesListBox
+            // 
+            this.UpdatesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdatesListBox.FormattingEnabled = true;
+            this.UpdatesListBox.Location = new System.Drawing.Point(3, 41);
+            this.UpdatesListBox.Name = "UpdatesListBox";
+            this.UpdatesListBox.Size = new System.Drawing.Size(301, 712);
+            this.UpdatesListBox.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Уведомления:";
+            // 
+            // ExitLinkLabel
+            // 
+            this.ExitLinkLabel.AutoSize = true;
+            this.ExitLinkLabel.Location = new System.Drawing.Point(3, 3);
+            this.ExitLinkLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.ExitLinkLabel.Name = "ExitLinkLabel";
+            this.ExitLinkLabel.Size = new System.Drawing.Size(43, 13);
+            this.ExitLinkLabel.TabIndex = 4;
+            this.ExitLinkLabel.TabStop = true;
+            this.ExitLinkLabel.Text = "Выйти";
+            this.ExitLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ExitLinkLabel_LinkClicked);
+            // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,7 +497,7 @@
             this.ClientSize = new System.Drawing.Size(941, 762);
             this.Controls.Add(tableLayoutPanel1);
             this.Name = "ProfileForm";
-            this.Text = "ProfileForm";
+            this.Text = "Профиль";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProfileForm_FormClosing);
             this.Load += new System.EventHandler(this.ProfileForm_Load);
             this.SizeChanged += new System.EventHandler(this.ProfileForm_SizeChanged);
@@ -538,5 +549,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox UpdatesListBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Button ApplyButton;
     }
 }
